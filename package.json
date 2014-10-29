@@ -17,5 +17,5 @@
     "jquery": "x.x.x"
   },
   "devDependencies": {},
-  "main": "sidebar.js"
+  "main": "index.js"
 }
