@@ -1,0 +1,20 @@
+{
+  "name": "UI-Sidebar",
+  "version": "1.0.0",
+  "title": "Semantic UI - Sidebar",
+  "description": "Single component release of sidebar",
+  "homepage": "http://www.semantic-ui.com",
+  "author": "Jack Lukic <jack@semantic-ui.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Semantic-Org/UI-Sidebar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Semantic-Org/Semantic-UI/issues"
+  },
+  "dependencies": {
+    "jquery": "x.x.x"
+  },
+  "devDependencies": {}
+}
