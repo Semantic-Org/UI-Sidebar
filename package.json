@@ -1,10 +1,6 @@
 {
   "name": "semantic-ui-sidebar",
-<<<<<<< HEAD
   "version": "1.0.0-beta",
-=======
-  "version": "1.0.0",
->>>>>>> 923d91c0fa5129ce1e97d4e6568ccdf6ef1294e6
   "title": "Semantic UI - Sidebar",
   "description": "Single component release of sidebar",
   "homepage": "http://www.semantic-ui.com",
@@ -17,16 +13,9 @@
   "bugs": {
     "url": "https://github.com/Semantic-Org/Semantic-UI/issues"
   },
-<<<<<<< HEAD
   "devDependencies": {},
   "dependencies": {
     "jquery": "x.x.x"
   },
-=======
-  "dependencies": {
-    "jquery": "x.x.x"
-  },
-  "devDependencies": {},
->>>>>>> 923d91c0fa5129ce1e97d4e6568ccdf6ef1294e6
   "main": "index.js"
 }
