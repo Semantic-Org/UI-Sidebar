@@ -14,5 +14,9 @@
     "jquery": "x.x.x"
   },
   "main": "sidebar.js",
+<<<<<<< HEAD
   "version": "1.0.0-beta"
+=======
+  "version": "1.0.0"
+>>>>>>> 923d91c0fa5129ce1e97d4e6568ccdf6ef1294e6
 }
