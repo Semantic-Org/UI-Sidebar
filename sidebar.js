@@ -75,7 +75,8 @@ $.fn.sidebar = function(parameters) {
           transitionEvent = module.get.transitionEvent();
 
           // cache on initialize
-          if( module.is.legacy() ) {
+          if( module.is.legacy() || settings.legacy) {
+            settings.transition = 'overlay';
             settings.useLegacy = true;
           }
 
@@ -104,7 +105,7 @@ $.fn.sidebar = function(parameters) {
 
         event: {
           clickaway: function(event) {
-            if( $module.find(event.target).size() === 0 && $(event.target).filter($module).size() === 0 ) {
+            if( $(event.target).closest(selector.sidebar).size() === 0 ) {
               module.verbose('User clicked on dimmed page');
               module.hide();
             }
@@ -121,7 +122,7 @@ $.fn.sidebar = function(parameters) {
             }
           },
           scroll: function(event) {
-            if( $module.find(event.target).size() === 0 && $(event.target).filter($module).size() === 0 ) {
+            if( $(event.target).closest(selector.sidebar).size() === 0 ) {
               event.preventDefault();
             }
           }
@@ -174,6 +175,13 @@ $.fn.sidebar = function(parameters) {
                 + '   -webkit-transform: translate3d(-'+ width + 'px, 0, 0);'
                 + '           transform: translate3d(-'+ width + 'px, 0, 0);'
                 + ' }'
+                + ' .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .fixed,'
+                + ' .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher,'
+                + ' .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .fixed,'
+                + ' .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher {'
+                + '   -webkit-transform: translate3d(0px, 0, 0);'
+                + '           transform: translate3d(0px, 0, 0);'
+                + ' }'
                 + ' .ui.visible.top.sidebar ~ .fixed,'
                 + ' .ui.visible.top.sidebar ~ .pusher {'
                 + '   -webkit-transform: translate3d(0, ' + height + 'px, 0);'
@@ -186,7 +194,7 @@ $.fn.sidebar = function(parameters) {
                 + ' }'
                 + '</style>'
             ;
-            $context.append(style);
+            $head.append(style);
             $style = $('style[title=' + namespace + ']');
             module.debug('Adding sizing css to head', $style);
           }
@@ -209,8 +217,9 @@ $.fn.sidebar = function(parameters) {
 
         setup: {
           layout: function() {
-            if( $context.find(selector.pusher).size() === 0 ) {
+            if( $context.children(selector.pusher).size() === 0 ) {
               module.debug('Adding wrapper element for sidebar');
+              module.error(error.pusher);
               $pusher = $('<div class="pusher" />');
               $context
                 .children()
@@ -220,8 +229,9 @@ $.fn.sidebar = function(parameters) {
               ;
               module.refresh();
             }
-            if($module.nextAll(selector.pusher)[0] !== $pusher[0]) {
+            if($module.nextAll(selector.pusher).size() == 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
               module.debug('Moved sidebar to correct parent element');
+              module.error(error.movedSidebar, element);
               $module.detach().prependTo($context);
               module.refresh();
             }
@@ -356,19 +366,17 @@ $.fn.sidebar = function(parameters) {
           if(settings.transition == 'scale down' || (module.is.mobile() && transition !== 'overlay')) {
             module.scrollToTop();
           }
-          module.add.bodyCSS();
           module.set.transition();
           module.repaint();
           animate = function() {
+            module.add.bodyCSS();
             module.set.animating();
-            requestAnimationFrame(function() {
-              module.set.visible();
-              if(!module.othersActive()) {
-                if(settings.dimPage) {
-                  $pusher.addClass(className.dimmed);
-                }
+            module.set.visible();
+            if(!module.othersActive()) {
+              if(settings.dimPage) {
+                $pusher.addClass(className.dimmed);
               }
-            });
+            }
           };
           transitionEnd = function(event) {
             if( event.target == $transition[0] ) {
@@ -414,7 +422,7 @@ $.fn.sidebar = function(parameters) {
               module.remove.animating();
               module.remove.transition();
               module.remove.bodyCSS();
-              if(transition == 'scale down' || (settings.returnScroll && transition !== 'overlay' && module.is.mobile()) ) {
+              if(transition == 'scale down' || (settings.returnScroll && module.is.mobile()) ) {
                 module.scrollBack();
               }
               $.proxy(callback, element)();
@@ -444,6 +452,7 @@ $.fn.sidebar = function(parameters) {
             $pusher.addClass(className.dimmed);
           }
           $context
+            .css('position', 'relative')
             .animate(properties, settings.duration, settings.easing, function() {
               module.remove.animating();
               module.bind.clickaway();
@@ -471,6 +480,7 @@ $.fn.sidebar = function(parameters) {
             $pusher.removeClass(className.dimmed);
           }
           $context
+            .css('position', 'relative')
             .animate(properties, settings.duration, settings.easing, function() {
               module.remove.animating();
               $.proxy(callback, module)();
@@ -480,6 +490,7 @@ $.fn.sidebar = function(parameters) {
 
         scrollToTop: function() {
           module.verbose('Scrolling to top of page to avoid animation issues');
+          currentScroll = $(window).scrollTop();
           $module.scrollTop(0);
           window.scrollTo(0, 0);
         },
@@ -851,14 +862,14 @@ $.fn.sidebar.settings = {
 
   defaultTransition : {
     computer: {
-      left   : 'uncover',
-      right  : 'uncover',
+      left   : 'push',
+      right  : 'push',
       top    : 'overlay',
       bottom : 'overlay'
     },
     mobile: {
-      left   : 'uncover',
-      right  : 'uncover',
+      left   : 'push',
+      right  : 'push',
       top    : 'overlay',
       bottom : 'overlay'
     }
@@ -866,11 +877,10 @@ $.fn.sidebar.settings = {
 
   context           : 'body',
   exclusive         : false,
-
   closable          : true,
   dimPage           : true,
   scrollLock        : false,
-  returnScroll      : true,
+  returnScroll      : false,
 
   useLegacy         : false,
   duration          : 500,
@@ -904,9 +914,11 @@ $.fn.sidebar.settings = {
   },
 
   error   : {
-    method   : 'The method you called is not defined.',
-    overlay  : 'The overlay setting is no longer supported, use animation: overlay',
-    notFound : 'There were no elements that matched the specified selector'
+    method       : 'The method you called is not defined.',
+    pusher       : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
+    movedSidebar : 'Had to move sidebar. For optimal performance make sure sidebar and pusher are direct children of your body tag',
+    overlay      : 'The overlay setting is no longer supported, use animation: overlay',
+    notFound     : 'There were no elements that matched the specified selector'
   }
 
 };
