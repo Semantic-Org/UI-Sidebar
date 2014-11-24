@@ -1,4 +1,4 @@
-### Version 1.0.0 - XX XX, 2014
+### Version 1.0.0 - November 24, 2014
 
 - **Sidebar** - Sidebar now has tall / very tall variations for resizing top/bottom sidebars
 
