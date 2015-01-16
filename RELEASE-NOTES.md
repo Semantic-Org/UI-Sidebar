@@ -1,3 +1,17 @@
+### Version 1.7.(1-2) - January 15, 2015
+
+- **UI** - Fixes `progress`, `ad`, and `sidebar` not loading `.override` files correctly
+
+### Version 1.7.0 - January 14, 2015
+
+- **Sidebar** - Having a sidebar visible on page load is now much simpler. You can include ``ui visible sidebar`` on page load to have a sidebar element appear on page load. To close call `$('.ui.sidebar').sidebar('hide')`
+- **Sidebar** - Added documentation on using sidebar on a custom context. Sidebars using a custom context no longer add background colors like those initialized on `body`
+- **Sidebar** - `setup layout` not occurs synchronously if you initialize a sidebar without the proper html. This makes sure calls to sidebar will occur correctly before the page is setup. A new setting `delaySetup` will override this, increasing performance.
+
+### Version 1.5.2 - January 02, 2015
+
+- **Sidebar** - Fix bug with `useLegacy` introduced in `1.5.1`
+
 ### Version 1.3.0 - December 17, 2014
 
 - **Sidebar** - Mobile sidebars now only set ``overflow`` on page's ``html`` when browsing from ``iOS`` devices. Using overflow caused issues with page's scroll being lost when resizing a browser to mobile widths. This also affected modules that used  `$(window).scrollTop()`` at mobile screen sizes
