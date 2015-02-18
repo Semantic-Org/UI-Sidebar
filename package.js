@@ -5,7 +5,7 @@ var
 Package.describe({
   name    : 'semantic:ui-sidebar',
   summary : 'Semantic UI - Sidebar (official): Single component release of sidebar',
-  version : '1.9.9',
+  version : '1.9.0',
   git     : 'git://github.com/Semantic-Org/UI-Sidebar.git',
 });
 
