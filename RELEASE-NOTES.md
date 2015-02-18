@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### UI Changes
 
 - **Sidebar** - Sidebars in IE now work correctly with `context` specified
@@ -8,6 +9,8 @@
 - **Sidebar** - Mobile `is mobile` was using RegExp `test()` which would return an incorrect value when called multiple times
 - **Sidebar** - Sidebar will now only close if you click on `pusher` or underlayed `body` (scale out). Clicking on fixed elements will not close sidebar.
 
+=======
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
 ### Version 1.7.(1-2) - January 15, 2015
 
 - **UI** - Fixes `progress`, `ad`, and `sidebar` not loading `.override` files correctly

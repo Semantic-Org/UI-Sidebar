@@ -8,11 +8,20 @@
     "web": "http://www.jacklukic.com",
     "role": "Creator"
   }],
-  "keywords": ["semantic", "ui", "css", "framework"],
+  "keywords": [
+    "semantic",
+    "ui",
+    "css",
+    "framework"
+  ],
   "license": "MIT",
   "dependencies": {
     "jquery": "x.x.x"
   },
   "main": "sidebar.js",
+<<<<<<< HEAD
   "version": "1.0.0-beta"
+=======
+  "version": "1.7.2"
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
 }

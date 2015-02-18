@@ -59,7 +59,10 @@ $.fn.sidebar = function(parameters) {
         $context        = $(settings.context),
 
         $sidebars       = $module.children(selector.sidebar),
+<<<<<<< HEAD
         $fixed          = $context.children(selector.fixed),
+=======
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
         $pusher         = $context.children(selector.pusher),
         $style,
 
@@ -135,17 +138,32 @@ $.fn.sidebar = function(parameters) {
 
         event: {
           clickaway: function(event) {
+<<<<<<< HEAD
             var
               clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
               clickedContext  = ($context.is(event.target))
             ;
             if(clickedInPusher) {
+=======
+            if( $(event.target).closest(selector.sidebar).length === 0 ) {
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
               module.verbose('User clicked on dimmed page');
               module.hide();
             }
             if(clickedContext) {
               module.verbose('User clicked on dimmable context (scaled out page)');
               module.hide();
+            }
+          },
+          touch: function(event) {
+            //event.stopPropagation();
+          },
+          containScroll: function(event) {
+            if(element.scrollTop <= 0)  {
+              element.scrollTop = 1;
+            }
+            if((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
+              element.scrollTop = element.scrollHeight - element.offsetHeight - 1;
             }
           },
           touch: function(event) {
@@ -223,6 +241,7 @@ $.fn.sidebar = function(parameters) {
               module.verbose('RTL detected, flipping widths');
               distance.left = -width;
               distance.right = width;
+<<<<<<< HEAD
             }
 
             style  = '<style title="' + namespace + '">';
@@ -237,6 +256,22 @@ $.fn.sidebar = function(parameters) {
                 + ' }'
               ;
             }
+=======
+            }
+
+            style  = '<style title="' + namespace + '">';
+
+            if(direction === 'left' || direction === 'right') {
+              module.debug('Adding CSS rules for animation distance', width);
+              style  += ''
+                + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
+                + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
+                + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                + ' }'
+              ;
+            }
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
             else if(direction === 'top' || direction == 'bottom') {
               style  += ''
                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
@@ -253,7 +288,11 @@ $.fn.sidebar = function(parameters) {
               if(direction === 'left' || direction === 'right') {
                 module.debug('Adding CSS rules for animation distance', width);
                 style  += ''
+<<<<<<< HEAD
                   + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
+=======
+                  + ' .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
                   + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + ' }'
@@ -261,7 +300,11 @@ $.fn.sidebar = function(parameters) {
               }
               else if(direction === 'top' || direction == 'bottom') {
                 style  += ''
+<<<<<<< HEAD
                   + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
+=======
+                  + ' .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + ' }'
@@ -269,13 +312,22 @@ $.fn.sidebar = function(parameters) {
               }
               /* opposite sides visible forces content overlay */
               style += ''
+<<<<<<< HEAD
                 + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher:after,'
                 + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher:after {'
+=======
+                + ' .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher:after,'
+                + ' .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher:after {'
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
                 + '   -webkit-transform: translate3d(0px, 0, 0);'
                 + '           transform: translate3d(0px, 0, 0);'
                 + ' }'
               ;
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
             style += '</style>';
             $head.append(style);
             $style = $('style[title=' + namespace + ']');
@@ -288,7 +340,10 @@ $.fn.sidebar = function(parameters) {
           $context  = $(settings.context);
           $sidebars = $context.children(selector.sidebar);
           $pusher   = $context.children(selector.pusher);
+<<<<<<< HEAD
           $fixed    = $context.children(selector.fixed);
+=======
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
         },
 
         refreshSidebars: function() {
@@ -462,7 +517,11 @@ $.fn.sidebar = function(parameters) {
           if(settings.transition == 'scale down') {
             module.scrollToTop();
           }
+<<<<<<< HEAD
           module.set.transition(transition);
+=======
+          module.set.transition();
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
           module.repaint();
           animate = function() {
             module.bind.clickaway();
@@ -505,7 +564,11 @@ $.fn.sidebar = function(parameters) {
           ;
           module.verbose('Removing context push state', module.get.direction());
 
+<<<<<<< HEAD
           module.set.transition(transition);
+=======
+          module.set.transition();
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
           module.unbind.clickaway();
           module.unbind.scrollLock();
 
@@ -765,7 +828,11 @@ $.fn.sidebar = function(parameters) {
           ios: function() {
             var
               userAgent = navigator.userAgent,
+<<<<<<< HEAD
               isIOS     = userAgent.match(regExp.ios)
+=======
+              isIOS     = regExp.ios.test(userAgent)
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
             ;
             if(isIOS) {
               module.verbose('Browser was found to be iOS', userAgent);
@@ -778,7 +845,11 @@ $.fn.sidebar = function(parameters) {
           mobile: function() {
             var
               userAgent    = navigator.userAgent,
+<<<<<<< HEAD
               isMobile     = userAgent.match(regExp.mobile)
+=======
+              isMobile     = regExp.mobile.test(userAgent)
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
             ;
             if(isMobile) {
               module.verbose('Browser was found to be mobile', userAgent);

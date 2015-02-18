@@ -1,5 +1,9 @@
  /*
+<<<<<<< HEAD
  * # Semantic UI - 1.9.0
+=======
+ * # Semantic UI - 1.7.2
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *
@@ -90,6 +94,7 @@
   padding: 0em !important;
 }
 
+<<<<<<< HEAD
 /* Whole Page */
 body.pushable {
   background: #333333 !important;
@@ -104,6 +109,17 @@ body.pushable {
 .pushable:not(body) > .fixed,
 .pushable:not(body) > .pusher:after {
   position: absolute;
+=======
+/* Inside Page */
+.pushable:not(body) {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+/* Whole Page */
+body.pushable {
+  background: #333333 !important;
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
 }
 
 /*--------------
@@ -128,7 +144,10 @@ body.pushable {
   position: relative;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+<<<<<<< HEAD
   overflow: hidden;
+=======
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
   min-height: 100%;
   -webkit-transition: -webkit-transform 500ms ease;
           transition: transform 500ms ease;
@@ -547,6 +566,7 @@ html.ios {
   -webkit-transition: -webkit-transform 500ms ease;
           transition: transform 500ms ease;
   z-index: 102;
+<<<<<<< HEAD
 }
 
 /* Sidebar - Initial  */
@@ -554,6 +574,15 @@ html.ios {
   -webkit-transform: translate3d(-100%, 0, 0);
           transform: translate3d(-100%, 0, 0);
 }
+=======
+}
+
+/* Sidebar - Initial  */
+.ui.left.scale.down.sidebar {
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+}
+>>>>>>> 9d57246865c311b7fb1814d9e25d15631d4d52c0
 .ui.right.scale.down.sidebar {
   -webkit-transform: translate3d(100%, 0, 0);
           transform: translate3d(100%, 0, 0);
