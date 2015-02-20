@@ -1,17 +1,15 @@
-var
-  where = 'client' // Adds files only to the client
-;
 
 Package.describe({
   name    : 'semantic:ui-sidebar',
-  summary : 'Semantic UI - Sidebar (official): Single component release of sidebar',
-  version : '1.9.2',
+  summary : 'Semantic UI - Sidebar: Single component release',
+  version : '1.9.3',
   git     : 'git://github.com/Semantic-Org/UI-Sidebar.git',
 });
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
   api.addFiles([
-    
-  ], where);
+    'sidebar.css',
+    'sidebar.js'
+  ], 'client');
 });
