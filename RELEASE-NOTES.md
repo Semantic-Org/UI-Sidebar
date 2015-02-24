@@ -1,3 +1,7 @@
+### Version 1.10.0 - February 23, 2015
+
+- **Sidebar** - Sidebar using `exclusive: true` now queue animations after hiding previous sidebar (unless `overlay`) to avoid rendering issues
+
 ### UI Changes
 
 - **Sidebar** - Sidebars in IE now work correctly with `context` specified
