@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 1.10.4 - Sidebar
+ * # Semantic UI 1.11.0 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -116,9 +116,9 @@ module.exports = function(parameters) {
 
         create: {
           id: function() {
-            module.verbose('Creating unique id for element');
-            id = module.get.uniqueID();
+            id = (Math.random().toString(16) + '000000000').substr(2,8);
             elementNamespace = '.' + id;
+            module.verbose('Creating unique id for element', id);
           }
         },
 
@@ -732,9 +732,6 @@ module.exports = function(parameters) {
                 return transitions[transition];
               }
             }
-          },
-          uniqueID: function() {
-            return (Math.random().toString(16) + '000000000').substr(2,8);
           }
         },
 
