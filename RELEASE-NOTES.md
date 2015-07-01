@@ -1,3 +1,13 @@
+### Version 2.0.0 - June 30, 2015
+
+- **Sidebar** - iOS will now correctly report `scrollTop` values for `document` or `body` when using a sidebar. Chrome on iOS no longer has issues with fixed content not sticking immediately when using a sidebar.
+- **Sidebar** - Improved animation performance through performance debugging. Sidebar now caches, width, height, rtl direction on load.
+- **Modal** - Modal with `detachable: false` inside `ui sidebar`  `pusher` element will now show correctly
+- **Sidebar** - Top/Bottom sidebar will now show scroll bars correctly when taller than 100% page height
+- **Sidebar** - Fixed bug where having a `style[title]` in page causing page not to be pushed correctly
+- **Sidebar** - Last menu item now has a border when sidebar and menu are used together
+- **Sidebar** - Sidebar `legacy` animations have been removed. 3D transforms are now available in all supported browsers.
+
 ### Version 1.10.0 - February 23, 2015
 
 - **Sidebar** - Sidebar using `exclusive: true` now queue animations after hiding previous sidebar (unless `overlay`) to avoid rendering issues
