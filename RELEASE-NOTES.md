@@ -1,3 +1,8 @@
+### Version 2.0.4 - July 17, 2015
+
+- **Sidebar** - `right`, `top`, and `bottom` sidebar will not have their direction removed on `destroy` [#2644](https://github.com/Semantic-Org/Semantic-UI/issues/2644)
+- Partial rewriite of sidebar documentation
+
 ### Version 2.0.0 - June 30, 2015
 
 - **Sidebar** - iOS will now correctly report `scrollTop` values for `document` or `body` when using a sidebar. Chrome on iOS no longer has issues with fixed content not sticking immediately when using a sidebar.
