@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.0.7 - Sidebar
+ * # Semantic UI 2.0.8 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -938,7 +938,7 @@ module.exports = function(parameters) {
   ;
 };
 
-module.exports.settings = {
+_module.exports.settings = {
 
   name              : 'Sidebar',
   namespace         : 'sidebar',
