@@ -1,3 +1,7 @@
+#### Dropdown
+
+- **Sidebar** - Fixed bug where sidebar in `iOS` would show incorrect background when opening sidebar if page is less than 100% height [#4264](https://github.com/Semantic-Org/Semantic-UI/pull/4264)
+
 ### Version 2.1.7 - Dec 19, 2015
 
 - **Sidebar** - Fixed css rule issue causing `very thin` sidebar to not work [#3300](https://github.com/Semantic-Org/Semantic-UI/issues/3300)
